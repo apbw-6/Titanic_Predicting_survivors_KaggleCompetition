@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Would you have survived Titanic?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Would you have survived Titanic?</h2>
+        <form action="{{ url_for('predict')}}" method="post">
+
+
+            <label for="Title">Title:</label>
+            <select id="Title" name="Title" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="Mr.">Mr.</option>
+            <option value="Mrs.">Mrs.</option>
+            <option value="Master.">Master.</option>
+            <option value="Miss.">Miss.</option>
+            <option value="Dr.">Dr.</option>
+            </select>
+
+            <label for="Pclass">Passenger class:</label>
+            <select id="Pclass" name="Pclass" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="1">1st</option>
+            <option value="2">2nd</option>
+            <option value="3">3rd</option>
+            </select>
+            
+            <label for="Sex">Gender:</label>
+            <select id="Sex" name="Sex" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            </select>
+            
+            <label for="Age">Age:</label>
+            <input type="text" id="Age" name="Age" pattern="^\d+(\.\d+)?$" required 
+               title="Please enter a valid number"><br><br>
+
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
