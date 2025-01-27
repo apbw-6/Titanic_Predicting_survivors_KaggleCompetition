@@ -1,0 +1,9 @@
+flask
+pandas==2.2.2
+numpy==1.26.4
+matplotlib
+seaborn
+scikit-learn==1.2.2
+ipykernel
+python-dotenv
+gunicorn
